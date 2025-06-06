@@ -10,10 +10,10 @@ public class MainUIManager : MonoBehaviour
 
     public static MainUIManager Instance { get; set; }
 
-
+    [Header("UI List")]
     [SerializeField]
     List<ButtonHandler> uiList = new List<ButtonHandler>();
-
+    [SerializeField] private GameObject backButton;
 
 
 
@@ -69,6 +69,38 @@ public class MainUIManager : MonoBehaviour
 
 
     }
+
+    public void DeActiveAllButton()
+    {
+        for (int i = 0; i < uiList.Count; i++)
+        {
+            uiList[i].gameObject.SetActive(false);
+
+        }
+            backButton.SetActive(true);
+
+    }
+
+    public void ActiveAllButton()
+    {
+        for (int i = 0; i < uiList.Count; i++)
+        {
+            uiList[i].gameObject.SetActive(true);
+
+        }
+        backButton.SetActive(false);
+
+    }
+
+    public void ResetAll()
+    {
+        ActiveAllButton();
+        for (int i = 0; i < uiList.Count; i++)
+        {
+            uiList[i].DeactiveUIObject();
+        }
+        backButton.SetActive(false);
+     }
 
 
 

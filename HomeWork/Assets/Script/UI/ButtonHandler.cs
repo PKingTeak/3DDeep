@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public enum ButtonType
 {
     Status = 0,
-    Inventory =1
+    Inventory = 1,
+    
+    Back = 100
 
     //추가 하면 넣어주기 
 
@@ -30,6 +32,12 @@ public class ButtonHandler : MonoBehaviour
     {
 
         GetComponent<Button>().onClick.AddListener(() => MainUIManager.Instance.OnclickButton(index));
+        GetComponent<Button>().onClick.AddListener(() => MainUIManager.Instance.DeActiveAllButton());
+
+        if( buttonType == ButtonType.Back)
+        {
+            GetComponent<Button>().onClick.AddListener(() => ClickBackButton());
+        }
     }
 
     public void ActiveUIObject()
@@ -44,6 +52,17 @@ public class ButtonHandler : MonoBehaviour
         UIObject.SetActive(false);
 
     }
+
+    public void ClickBackButton()
+    {
+        if (buttonType == ButtonType.Back)
+        {
+            //모든 버튼 켜기 
+            MainUIManager.Instance.ResetAll();
+            
+        }
+
+     }
 
 
 
