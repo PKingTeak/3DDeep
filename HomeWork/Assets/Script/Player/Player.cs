@@ -10,9 +10,7 @@ public class Player : MonoBehaviour
     [Header("ItemTestData")]
     public ItemData Item;
     public ItemData Item1;
-    public ItemData Item2;
-
-
+   
 
 
     private Character player;
@@ -28,10 +26,15 @@ public class Player : MonoBehaviour
     {
         inventory = new Inventory();
 
-        inventory.AddItem(0, Item);
-        inventory.AddItem(1, Item1);
-        inventory.AddItem(2, Item2);
+        Item adItem = new Item();
+        adItem.ItemInit(Item);
 
+        Item adItem2 = new Item();
+        adItem2.ItemInit(Item1);
+
+        inventory.AddItem(0,adItem);
+        inventory.AddItem(1, adItem2);
+      
     }
 
     public Character GetPlayer()

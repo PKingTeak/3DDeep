@@ -9,19 +9,19 @@ public class Inventory : MonoBehaviour
 {
     public event Action OnChangeInventory;
 
-    
 
 
-    Dictionary<int, ItemData> itemDictionary = new Dictionary<int, ItemData>();
+
+    Dictionary<int, Item> itemDictionary = new Dictionary<int, Item>();
     //인덱스로 저장하여 해당 아이템을 저장할 것이다. 
 
 
-    public void AddItem(int index, ItemData itemData)
+    public void AddItem(int index, Item itme)
     {
         if (!itemDictionary.ContainsKey(index))
         {
-            itemDictionary.Add(index, itemData);
-            OnChangeInventory?.Invoke();
+            itemDictionary.Add(index, itme);
+            
         }
         else
         {
@@ -35,7 +35,7 @@ public class Inventory : MonoBehaviour
         if (itemDictionary.ContainsKey(index))
         {
             itemDictionary.Remove(index);
-            OnChangeInventory?.Invoke(); 
+          
         }
         else
         {
@@ -46,14 +46,14 @@ public class Inventory : MonoBehaviour
     }
 
 
-    public Dictionary<int, ItemData> GetAllItems()
+    public Dictionary<int, Item> GetAllItems()
     {
         return itemDictionary;
 
     }
-    
 
-    public ItemData GetItem(int index)
+
+    public Item GetItem(int index)
     {
         if (itemDictionary.ContainsKey(index))
         {
@@ -69,5 +69,22 @@ public class Inventory : MonoBehaviour
 
     }
 
+
+    //빈곳 찾기
+    public int FindEmptySlot()
+    {
+        for (int i = 0; i < itemDictionary.Count; i++)
+        {
+            if (itemDictionary[i] == null)
+            {
+
+                return i;
+            }
+
+        }
+
+        Debug.Log("빈곳이 없습니다.");
+        return -1;
+     }
 
 }

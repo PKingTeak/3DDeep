@@ -40,6 +40,7 @@ public class MainUIManager : MonoBehaviour
             {
                 uiList[i].SetButtonIndex(i);
                 uiList[i].DeactiveUIObject();
+               
 
             }
         }
@@ -58,12 +59,15 @@ public class MainUIManager : MonoBehaviour
             if (i == index)
             {
                 uiList[i].ActiveUIObject();
+                uiList[i].InvokeExtraEvent(); //여기서 등록된 이벤트 실행
             }
             else
             {
                 uiList[i].DeactiveUIObject();
             }
             //해당 인덱스 말고 모든 UI를 비활성화
+
+            
 
         }
 

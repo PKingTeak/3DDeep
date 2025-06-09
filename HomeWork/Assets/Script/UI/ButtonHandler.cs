@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine.UI;
 
 public enum ButtonType
 {
+
+    
     Status = 0,
     Inventory = 1,
     
@@ -17,6 +20,8 @@ public enum ButtonType
 
 public class ButtonHandler : MonoBehaviour
 {
+    private event Action ExtraEvent;
+
     [SerializeField] private ButtonType buttonType;
     [SerializeField] private GameObject UIObject;
 
@@ -34,11 +39,31 @@ public class ButtonHandler : MonoBehaviour
         GetComponent<Button>().onClick.AddListener(() => MainUIManager.Instance.OnclickButton(index));
         GetComponent<Button>().onClick.AddListener(() => MainUIManager.Instance.DeActiveAllButton());
 
-        if( buttonType == ButtonType.Back)
+        if (buttonType == ButtonType.Back)
         {
             GetComponent<Button>().onClick.AddListener(() => ClickBackButton());
         }
+        else if (buttonType == ButtonType.Inventory)
+        {
+
+            GetComponent<Button>().onClick.AddListener(() => ExtraEvent?.Invoke());//호출하기
+         }
     }
+
+    public ButtonType GetButtonType()
+    {
+        return buttonType;
+
+    }
+public void SetExtraAction(Action action)
+{
+    ExtraEvent = action;
+}
+
+public void InvokeExtraEvent()
+{
+    ExtraEvent?.Invoke(); // ✅ 외부에서 호출 가능
+}
 
     public void ActiveUIObject()
     {
