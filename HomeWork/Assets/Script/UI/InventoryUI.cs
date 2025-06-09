@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +10,7 @@ public class InventoryUI : MonoBehaviour
     private List<Slot> slots = new List<Slot>();
 
     [SerializeField] private ScrollRect scrollRect;
+    [SerializeField] private Player player;
 
 
 
@@ -21,6 +22,11 @@ public class InventoryUI : MonoBehaviour
             {
                 slots[i].SetItemData(item); //아이템 데이터 넣어주기
             }
+            else
+            {
+                slots[i].ClearSlot();
+            }
+            
 
         }
 
@@ -37,7 +43,26 @@ public class InventoryUI : MonoBehaviour
 
     }
 
+    private void OnEnable()
+    {
+        if (player != null)
+        {
+            player.Inventory.OnChangeInventory += UpdateInventroyUI;
+        }
+    }
 
+    private void OnDisable()
+    {
+        if (player != null)
+        {
+            player.Inventory.OnChangeInventory -= UpdateInventroyUI;
+        }
+    }
+
+    private void UpdateInventroyUI()
+    {
+        DisPlayItem(player.Inventory.GetAllItems());
+    }
 
     public void EqumentItem()
     {

@@ -1,3 +1,4 @@
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,12 +7,8 @@ using UnityEngine;
 //플레이어 내부에서 직접 동적으로 생성하여 사용할까 고민중
 public class Inventory : MonoBehaviour
 {
+    public event Action OnChangeInventory;
 
-    [Header("Testing")]
-    public ItemData item;
-    public ItemData item2
-    ;
-    public ItemData item3;
     
 
 
@@ -24,6 +21,7 @@ public class Inventory : MonoBehaviour
         if (!itemDictionary.ContainsKey(index))
         {
             itemDictionary.Add(index, itemData);
+            OnChangeInventory?.Invoke();
         }
         else
         {
@@ -37,6 +35,7 @@ public class Inventory : MonoBehaviour
         if (itemDictionary.ContainsKey(index))
         {
             itemDictionary.Remove(index);
+            OnChangeInventory?.Invoke(); 
         }
         else
         {
