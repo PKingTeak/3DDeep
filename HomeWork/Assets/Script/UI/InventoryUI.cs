@@ -15,11 +15,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private ScrollRect scrollRect;
     [SerializeField] private Player player;
 
-    void OnEnable()
-    {
-        
-    }
-
+   
 
     public void DisPlayItem(Dictionary<int, Item> itemDic)
     {
@@ -44,12 +40,8 @@ public class InventoryUI : MonoBehaviour
                 slots[i].ClearSlot();
             }
 
-
-        }
+         }
        
-
-
-
     }
 
     private void InitSlotList()
@@ -71,6 +63,7 @@ public class InventoryUI : MonoBehaviour
 
     private void UpdateInventroyUI()
     {
+        Debug.Log("인벤토리 업데이트 시작");
         DisPlayItem(player.Inventory.GetAllItems());
     }
 

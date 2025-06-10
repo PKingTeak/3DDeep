@@ -16,11 +16,11 @@ public class Inventory : MonoBehaviour
     //인덱스로 저장하여 해당 아이템을 저장할 것이다. 
 
 
-    public void AddItem(int index, Item itme)
+    public void AddItem(int index, Item item)
     {
         if (!itemDictionary.ContainsKey(index))
         {
-            itemDictionary.Add(index, itme);
+            itemDictionary.Add(index, item);
             
         }
         else

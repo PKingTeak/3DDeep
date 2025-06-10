@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 
 using TMPro;
@@ -13,9 +13,13 @@ public class Slot : MonoBehaviour
 
 
     private Item item;
+    [SerializeField]
     private Image itemIconImage;
+    [SerializeField]
     private TextMeshProUGUI Equimenttext;
 
+
+  
 
 
     public void InitSlot(int _index)
@@ -31,9 +35,6 @@ public class Slot : MonoBehaviour
         itemData = _item.GetItemData();
         itemIconImage.sprite = _item.GetItemData().itemIcon;
         IsEquiment();
-        
-
-
     }
 
     public void ClearSlot()
@@ -50,15 +51,15 @@ public class Slot : MonoBehaviour
         {
             return;
         }
-        itemIconImage = GetComponentInChildren<Image>();
+
         //슬롯이 생성되면 따로 해줄께 있나?
     }
 
     public void ShowSlotInfo()
     {
         itemIconImage.sprite = item.GetItemData().itemIcon;
-       
-     }
+
+    }
     // Update is called once per frame
     void Update()
     {
@@ -69,12 +70,26 @@ public class Slot : MonoBehaviour
     {
         if (item.IsEquiment)
         {
+            GameManager.instance.Player.ApplyItem(item);
+            GameManager.instance.player.ApplyItem(item);
             Equimenttext.gameObject.SetActive(true);
         }
-        else
+        else if (!item.IsEquiment && Equimenttext.IsActive() == true)
         {
+            GameManager.instance.player.RemoveItem(item);
             Equimenttext.gameObject.SetActive(false);
-         }
+        }
+
+    }
+
+    public void ClickSlot()
+    {
+        if (item == null) return;
+
+        item.ToggleEquip();
+        IsEquiment();
+
+
 
     }
 }

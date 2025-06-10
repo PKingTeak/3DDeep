@@ -10,6 +10,8 @@ public class CharacterStateData
     public string Name;
     public int Level;
     public int MaxHp;
+    public int Damage;
+    public int Defense;
     public int Gold;
 }
 
