@@ -43,11 +43,7 @@ public class ButtonHandler : MonoBehaviour
         {
             GetComponent<Button>().onClick.AddListener(() => ClickBackButton());
         }
-        else if (buttonType == ButtonType.Inventory)
-        {
-
-            GetComponent<Button>().onClick.AddListener(() => ExtraEvent?.Invoke());//호출하기
-         }
+      
     }
 
     public ButtonType GetButtonType()

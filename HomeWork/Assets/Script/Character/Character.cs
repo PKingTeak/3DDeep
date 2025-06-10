@@ -52,6 +52,7 @@ public class Character : MonoBehaviour
         curAttack += damage;
         curDefense += defense;
         curMaxHp += maxHp;
+        Debug.Log("증가");
     }
 
     public void RejectState(int damage, int defense, int maxHp)
@@ -59,11 +60,17 @@ public class Character : MonoBehaviour
 
         curAttack -= damage;
         curDefense -= defense;
-        MaxHp -= maxHp;
+        curMaxHp -= maxHp;
+        Debug.Log("감소");
+    }
+
+    public void AddGold(int gold)
+    {
+        Gold += gold;
+        //다른 몬스터 가 들고있다가 죽고 드랍할수도 잇으니까 다른 몬스터들도 골드를 소유할수도 있어서 확장성을 생각해서 구현
     }
 
 
-    
 
 
 

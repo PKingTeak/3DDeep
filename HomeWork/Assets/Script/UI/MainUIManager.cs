@@ -1,5 +1,6 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,13 +9,19 @@ public class MainUIManager : MonoBehaviour
 {
     //모든 UI 매니저를 관리하는 클래스
 
+
     public static MainUIManager Instance { get; set; }
 
+
+    //[SerializeField]
+    //private InputField idInputText;
     [Header("UI List")]
     [SerializeField]
     List<ButtonHandler> uiList = new List<ButtonHandler>();
     [SerializeField] private GameObject backButton;
 
+    [SerializeField]
+    TextMeshProUGUI GoldText;
 
 
 
@@ -33,6 +40,9 @@ public class MainUIManager : MonoBehaviour
 
     private void Start()
     {
+        //idInputText.GetComponent<InputField>();
+
+        GoldText.text = GameManager.instance.Player.GetCurGold().ToString();
         if (uiList.Count > 0)
         {
 
@@ -40,10 +50,23 @@ public class MainUIManager : MonoBehaviour
             {
                 uiList[i].SetButtonIndex(i);
                 uiList[i].DeactiveUIObject();
-               
+
 
             }
         }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            GoldUpdate();
+        }
+    }
+    public void GoldUpdate()
+    {
+        GameManager.instance.Player.AddPlayerGold(1000);
+        GoldText.text = GameManager.instance.Player.GetCurGold().ToString();
     }
 
     public void OnclickButton(int index)

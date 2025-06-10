@@ -62,5 +62,13 @@ public class Player : MonoBehaviour
     {
         return player;    
     }
+    public int GetCurGold()
+    {
+        return player.Gold;
+    }
+    public void AddPlayerGold(int gold)
+    {
+        player.AddGold(gold);
+    }
 
 }

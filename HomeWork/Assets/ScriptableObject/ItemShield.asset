@@ -15,3 +15,7 @@ MonoBehaviour:
   itemName: Shield
   itemIcon: {fileID: -2042807398, guid: cbceb5e4944654a6b85763a2cd1d440e, type: 3}
   equipPrefab: {fileID: 0}
+  itemstate:
+    ItemDamage: 2
+    ItemDefense: 30
+    ItemHp: 100
