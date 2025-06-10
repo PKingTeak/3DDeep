@@ -6,6 +6,9 @@ using UnityEngine.Rendering.Universal;
 
 public class Character : MonoBehaviour
 {
+    public int CurAttack { get { return curAttack; } }
+    public int CurDefense { get { return curDefense; } }
+    public int CurMaxHP { get { return curMaxHp; } }
     public string Name { get; private set; }
     public int Level { get; private set; }
     public int Gold { get; private set; }
@@ -38,16 +41,17 @@ public class Character : MonoBehaviour
 
         curAttack = baseAttack;
         curDefense = baseDefense;
+        curMaxHp = MaxHp;
         curHp = MaxHp;
 
-    
+
     }
 
     public void ApplyState(int damage, int defense, int maxHp)
     {
         curAttack += damage;
         curDefense += defense;
-        MaxHp += maxHp;
+        curMaxHp += maxHp;
     }
 
     public void RejectState(int damage, int defense, int maxHp)

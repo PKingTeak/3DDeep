@@ -71,12 +71,12 @@ public class Slot : MonoBehaviour
         if (item.IsEquiment)
         {
             GameManager.instance.Player.ApplyItem(item);
-            GameManager.instance.player.ApplyItem(item);
+            
             Equimenttext.gameObject.SetActive(true);
         }
         else if (!item.IsEquiment && Equimenttext.IsActive() == true)
         {
-            GameManager.instance.player.RemoveItem(item);
+            GameManager.instance.Player.RemoveItem(item);
             Equimenttext.gameObject.SetActive(false);
         }
 

@@ -12,3 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dab98702298890247ab099b5f3e40097, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: 
+  <CharacterStateData>k__BackingField:
+    Name: "\uACBD\uD0DD"
+    Level: 1
+    MaxHp: 100
+    Damage: 10
+    Defense: 5
+    Gold: 2000

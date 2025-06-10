@@ -18,14 +18,16 @@ public class Player : MonoBehaviour
     public Inventory Inventory { get { return inventory; } }
     private void Awake()
     {
-        GameManager.instance.player = this;
-        player = new Character();
-        player.InitCharacter(PlayerData);
-        inventory = new Inventory();
+        
     }
 
     private void Start()
     {
+        GameManager.instance.Player = this;
+        player = new Character();
+        player.InitCharacter(PlayerData);
+        inventory = new Inventory();
+
 
         Item adItem = new Item();
         adItem.ItemInit(Item);
