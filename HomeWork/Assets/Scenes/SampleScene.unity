@@ -3787,6 +3787,8 @@ MonoBehaviour:
   playerInfoUI: {fileID: 1654639376}
   Item: {fileID: 11400000, guid: a29101b1c3c074ae7bba7d1b0aefe831, type: 2}
   Item1: {fileID: 11400000, guid: 38b20508fd8de47ea908ff4fb1a715f9, type: 2}
+  Item2: {fileID: 11400000, guid: 7dabee46ec683c54cafc2ae4c9f7ccd1, type: 2}
+  Item3: {fileID: 11400000, guid: fa2aed4b019e2f64ea91b3e6aac9dcf2, type: 2}
 --- !u!4 &1091501016
 Transform:
   m_ObjectHideFlags: 0

@@ -11,7 +11,10 @@ public class Player : MonoBehaviour
     [Header("ItemTestData")]
     public ItemData Item;
     public ItemData Item1;
-   
+    public ItemData Item2;
+    public ItemData Item3;
+
+
 
 
     private Character player;
@@ -37,8 +40,16 @@ public class Player : MonoBehaviour
         Item adItem2 = new Item();
         adItem2.ItemInit(Item1);
         Debug.Log($"아이템 생성 완료 {Item1.name}");
+
+        Item adItem3 = new Item();
+        adItem3.ItemInit(Item2);
+        Item adItem4 = new Item();
+        adItem4.ItemInit(Item3);
+
         inventory.AddItem(0,adItem);
         inventory.AddItem(1, adItem2);
+        inventory.AddItem(2, adItem3);
+        inventory.AddItem(3, adItem4);
 
         playerInfoUI.BindPlayer(player);
 
