@@ -21,6 +21,7 @@ public class Character : MonoBehaviour
     public int Level { get; private set; }
 
     public int Gold { get; private set; }
+    public string Info { get; private set; }
 
     [SerializeField] private CharacterData data;
 
@@ -39,6 +40,7 @@ public class Character : MonoBehaviour
     private int curHp;
     private float maxExp;
     private float curExp;
+ 
     
     public void InitCharacter(CharacterData characterData)
     {
@@ -46,10 +48,13 @@ public class Character : MonoBehaviour
         Level = characterData.CharacterStateData.Level;
         MaxHp = characterData.CharacterStateData.MaxHp;
         Gold = characterData.CharacterStateData.Gold;
+        Info = characterData.CharacterStateData.CharacterInfo;
 
         baseAttack = characterData.CharacterStateData.Damage;
         baseDefense = characterData.CharacterStateData.Defense;
 
+
+       
         curAttack = baseAttack;
         curDefense = baseDefense;
         curMaxHp = MaxHp;
@@ -103,7 +108,10 @@ public class Character : MonoBehaviour
         ExpUpdate?.Invoke();
     }
 
-
+    public string GetCharacterInfo()
+    {
+        return Info;
+    }
 
 
 }

@@ -13,6 +13,8 @@ public class CharacterStateData
     public int Damage;
     public int Defense;
     public int Gold;
+
+    public string CharacterInfo;
 }
 
 

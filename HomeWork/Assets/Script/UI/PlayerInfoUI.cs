@@ -13,6 +13,8 @@ public class PlayerInfoUI : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI expRatioText;
     [SerializeField]
+    TextMeshProUGUI playerInfoText;
+    [SerializeField]
     Image expBar;
 
     private void Start()
@@ -47,6 +49,7 @@ public class PlayerInfoUI : MonoBehaviour
      
         Character playerData = GameManager.instance.Player.GetPlayer();
         playerName.text = playerData.Name;
+        playerInfoText.text = playerData.Info;
         playerLevel.text = $"Lv : {playerData.Level}";
         expBar.fillAmount = playerData.GetCurLevelRatio();
         expRatioText.text = $"{playerData.CurExp} / {playerData.MaxExp}";
