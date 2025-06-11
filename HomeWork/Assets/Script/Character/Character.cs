@@ -1,16 +1,25 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using static UnityEngine.PlayerLoop.EarlyUpdate;
 
 public class Character : MonoBehaviour
 {
+    public Action ExpUpdate;
     public int CurAttack { get { return curAttack; } }
     public int CurDefense { get { return curDefense; } }
     public int CurMaxHP { get { return curMaxHp; } }
+
+    public float CurExp { get { return curExp; } }
+
+    public float MaxExp { get { return maxExp; } }
+
     public string Name { get; private set; }
     public int Level { get; private set; }
+
     public int Gold { get; private set; }
 
     [SerializeField] private CharacterData data;
@@ -28,6 +37,8 @@ public class Character : MonoBehaviour
     private int curDefense;
     private int curMaxHp;
     private int curHp;
+    private float maxExp;
+    private float curExp;
     
     public void InitCharacter(CharacterData characterData)
     {
@@ -43,7 +54,8 @@ public class Character : MonoBehaviour
         curDefense = baseDefense;
         curMaxHp = MaxHp;
         curHp = MaxHp;
-
+        maxExp = 10;
+        curExp = 0;
 
     }
 
@@ -71,6 +83,25 @@ public class Character : MonoBehaviour
     }
 
 
+    public float GetCurLevelRatio()
+    {
+        return (float)curExp / maxExp;
+    }
+
+    public void AddExp(int value)
+    {
+
+        
+        curExp += value;
+
+        if (curExp >= maxExp)
+        {
+            Level++;
+            curExp -= maxExp;
+            maxExp *= Level;
+        }
+        ExpUpdate?.Invoke();
+    }
 
 
 

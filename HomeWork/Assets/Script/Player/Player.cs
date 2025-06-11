@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
 
     [SerializeField] private CharacterData PlayerData;
+    [SerializeField] private PlayerInfoUI playerInfoUI;
 
     [Header("ItemTestData")]
     public ItemData Item;
@@ -38,9 +39,19 @@ public class Player : MonoBehaviour
         Debug.Log($"아이템 생성 완료 {Item1.name}");
         inventory.AddItem(0,adItem);
         inventory.AddItem(1, adItem2);
-      
+
+        playerInfoUI.BindPlayer(player);
+
+
     }
 
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            player.AddExp(10);
+        }
+    }
 
     public void ApplyItem(Item item)
     {
