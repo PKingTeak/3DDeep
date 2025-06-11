@@ -34,7 +34,7 @@ public class Slot : MonoBehaviour
         item = _item;
         itemData = _item.GetItemData();
         itemIconImage.sprite = _item.GetItemData().itemIcon;
-        IsEquiment();
+       // IsEquiment();
     }
 
     public void ClearSlot()
@@ -68,7 +68,7 @@ public class Slot : MonoBehaviour
 
     public void IsEquiment()
     {
-        if (item.IsEquiment)
+        if (item.IsEquiment) //아이템 변수명 동일하니 혼동이 생긴다.
         {
             GameManager.instance.Player.ApplyItem(item);
             
